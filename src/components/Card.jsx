@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Answer from "./Answer";
+import Question from "./Question";
 
 const Card = ( {card} ) => {
 
@@ -9,8 +11,10 @@ const Card = ( {card} ) => {
   }
 
   return ( 
-    <div className="card" onClick={handleClick}>
-      { flipped ? card.answer : card.question }
+    <div className={"card " + card.difficulty} onClick={handleClick}>
+      <div className="card-inner">
+        { flipped ? <Answer answer={card.answer} image={card.image}/> : <Question question={card.question} />}
+      </div>
     </div>
    );
 }

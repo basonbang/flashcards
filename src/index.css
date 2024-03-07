@@ -4,8 +4,9 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color: rgba(0, 0, 0, 0.87);
   background-color: #242424;
+  
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -28,11 +29,27 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-image: url('/pngtree-chinese-style-meticulous-painting-landscape-simple-and-beautiful-chinese-style-picture-image_1477406.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 3em;
   line-height: 1.1;
+  background: linear-gradient(to right, red, darkred);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h2 {
+  font-size: 1.25em;
+}
+
+p {
+  font-size: 1em;
 }
 
 button {
@@ -45,14 +62,12 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  user-select: none;
 }
 button:hover {
   border-color: #646cff;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+
 
 @media (prefers-color-scheme: light) {
   :root {

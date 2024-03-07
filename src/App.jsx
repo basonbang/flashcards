@@ -12,13 +12,13 @@ function App() {
 
     setCurrentCard(flashcardSet[randomNumber])
   }
-  const [currentCard, setCurrentCard] = useState({ question: "Start!"});
+  const [currentCard, setCurrentCard] = useState({ question: "Start!", answer: "Press the next button!"});
   const count = flashcardSet.length;
 
   return (
     <div className='App'>
       <Header count={count}/>
-      <Card card={currentCard} />
+      <Card card={currentCard}/>
       <NextButton onClick={getNextCard}/>
     </div>
   )

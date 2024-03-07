@@ -1,6 +1,6 @@
 const NextButton = ( {onClick} ) => {
   return ( 
-    <button onClick={onClick}>
+    <button className="next-button" onClick={onClick}>
       ⭢
     </button>
    );
