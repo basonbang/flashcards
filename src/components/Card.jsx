@@ -12,9 +12,7 @@ const Card = ( {card} ) => {
 
   return ( 
     <div className={"card " + card.difficulty} onClick={handleClick}>
-      <div className="card-inner">
-        { flipped ? <Answer answer={card.answer} image={card.image}/> : <Question question={card.question} />}
-      </div>
+      { flipped ? <Answer answer={card.answer} image={card.image}/> : <Question question={card.question} />}
     </div>
    );
 }
