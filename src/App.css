@@ -42,6 +42,9 @@
   box-shadow: 0 10px 20px rgba(0,0,0,0.2); 
 }
 
+.start {
+  backdrop-filter: blur(10px);
+}
 .easy {
   background-color: rgb(131, 193, 131);
 }
@@ -85,3 +88,22 @@
   padding: 0 10px; /* Add some padding on the sides if needed */
   font-size: 3em;
 }
+
+/* Button container styles */
+.buttons-container {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  gap: 1em; 
+  margin: 1em 0; 
+}
+
+/* Individual button styles */
+.prev-button {
+  order: 1; /* Ensures the prev button comes first */
+}
+
+.next-button {
+  order: 2; /* Ensures the next button comes after the prev button */
+}
+

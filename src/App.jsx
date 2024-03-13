@@ -23,7 +23,7 @@ function App() {
     setCurrentCard(lastCard);  // set current card to the one behind it
   }
 
-  const [currentCard, setCurrentCard] = useState({ question: "Start!", answer: "Press the next button!"});
+  const [currentCard, setCurrentCard] = useState({ question: "Start!", answer: "Press the next button!", difficulty: "start"});
   const [prevCards, setPrevCards] = useState([]);
   const count = flashcardSet.length;
 
@@ -31,8 +31,10 @@ function App() {
     <div className='App'>
       <Header count={count}/>
       <Card card={currentCard}/>
-      <NextButton onClick={getNextCard}/>
-      <PrevButton onClick={getPrevCard} prevCards={prevCards}/>
+      <div className='buttons-container'>
+        <NextButton onClick={getNextCard}/>
+        <PrevButton onClick={getPrevCard} prevCards={prevCards}/>
+      </div>
     </div>
   )
 

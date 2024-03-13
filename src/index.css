@@ -62,10 +62,13 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  transition: border-color 0.25s, background-color 0.25s, transform 0.25s;
   user-select: none;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #050505;
+  background-color: #141414; /* Darken the button a bit on hover */
+  transform: translateY(-3px); /* Lift the button up a bit on hover */
 }
 
 
