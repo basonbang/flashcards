@@ -47,7 +47,11 @@ function App() {
     <div className='App'>
       <Header count={count}/>
       <Card card={currentCard} flipped={flipped} handleFlip={handleFlip}/>
-      <UserGuess card={currentCard} guessResult={guess} submitGuess={submitGuess}/>
+
+      {/** Don't render the UserGuess component if we're on the Start card */}
+      {(currentCard.difficulty !== 'start') && 
+      <UserGuess key={currentCard.id} card={currentCard} guessResult={guess} submitGuess={submitGuess}/>}
+
       <div className='buttons-container'>
         <NextButton onClick={getNextCard}/>
         <PrevButton onClick={getPrevCard} prevCards={prevCards}/>
