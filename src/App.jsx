@@ -8,9 +8,15 @@ import './App.css'
 
 function App() {
 
+  const [currentCard, setCurrentCard] = useState({ question: "Start!", answer: "Press the next button!", difficulty: "start"});
+  const [prevCards, setPrevCards] = useState([]);
+  const [flipped, setFlipped] = useState(false);
+  const count = flashcardSet.length;
+
   const getNextCard = () => {
     let randomNumber = Math.floor(Math.random() * 10);  
 
+    setFlipped(false);
     setPrevCards([...prevCards, currentCard]) // add current card to prevCard array
     setCurrentCard(flashcardSet[randomNumber]); // set current card to random index     
   }
@@ -19,18 +25,20 @@ function App() {
     const newPrevCard = prevCards.slice(0, prevCards.length - 1);
     const lastCard = prevCards[prevCards.length - 1];
 
+    setFlipped(false);
     setPrevCards(newPrevCard); // remove last card from previous card array
     setCurrentCard(lastCard);  // set current card to the one behind it
   }
 
-  const [currentCard, setCurrentCard] = useState({ question: "Start!", answer: "Press the next button!", difficulty: "start"});
-  const [prevCards, setPrevCards] = useState([]);
-  const count = flashcardSet.length;
+  const handleFlip = () => {
+    setFlipped((prevState) => !prevState)
+  }
+
 
   return (
     <div className='App'>
       <Header count={count}/>
-      <Card card={currentCard}/>
+      <Card card={currentCard} flipped={flipped} handleFlip={handleFlip}/>
       <div className='buttons-container'>
         <NextButton onClick={getNextCard}/>
         <PrevButton onClick={getPrevCard} prevCards={prevCards}/>
