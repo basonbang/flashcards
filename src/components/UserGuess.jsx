@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const UserGuess = ( {card, submitGuess, guessResult}) => {
+const UserGuess = ( {card, submitGuess, guessResult, handleStreak}) => {
 
   const [formData, setFormData] = useState({
     "guess": ""
@@ -14,6 +14,14 @@ const UserGuess = ( {card, submitGuess, guessResult}) => {
     event.preventDefault();
     const answer = card.answer.replace(/,/g, "").toLowerCase();
     const guess = formData.guess.toLowerCase();
+
+    if (answer.includes(guess)) {
+      submitGuess("correct");
+      handleStreak(1);
+    } else {
+      submitGuess("incorrect");
+      handleStreak(0);
+    }
     
     (answer.includes(guess) ) ? submitGuess("correct") : submitGuess("incorrect")
     

@@ -17,8 +17,31 @@
 }
 
 .header {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
+
+/* Style for the number of cards and streaks container */
+.header > div {
+  display: flex;
+  justify-content: space-evenly; /* Space out the number of cards and the streak info */
+  width: 100%; /* Stretch the container to full width */
+}
+
+/* Styles for the streak information */
+#streak,
+#longest-streak {
+  margin: 0; /* Remove default margins */
+}
+
+/* When using a className for the streaks container */
+.streak {
+  display: flex;
+  flex-direction: column; /* Stack streak info vertically */
+  align-items: flex-end; /* Align streak info to the right */
+  gap: 0.5rem; /* Provide some space between the streak items */
+}
+
+
 
 /* Styles for the Card component */
 .card {

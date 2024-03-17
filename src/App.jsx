@@ -13,6 +13,9 @@ function App() {
   const [prevCards, setPrevCards] = useState([]);
   const [flipped, setFlipped] = useState(false);
   const [guess, setGuess] = useState("");
+  const [streak, setStreak] = useState(0);
+  const [longestStreak, setLongestStreak] = useState(0);
+
   const count = flashcardSet.length;
 
   const getNextCard = () => {
@@ -42,15 +45,36 @@ function App() {
     setGuess(result);
   }
 
+  const handleStreak = (result) => {
+    if (result === 1) {
+      // First correct guess, ensure both streak and longestStreak are incremented
+      if (longestStreak === 0) {
+        setStreak(1);
+        setLongestStreak(1);
+      } else if (streak >= longestStreak){
+        setLongestStreak(streak + 1);
+        setStreak((prevState) => prevState + 1);
+      } else {
+        setStreak((prevState) => prevState + 1);
+      }
+
+      console.log("Streak: " + streak);
+      console.log("Longest streak: " + longestStreak);
+      
+    } else {
+      setStreak(0);
+    }
+  }
+
 
   return (
     <div className='App'>
-      <Header count={count}/>
+      <Header count={count} streak={streak} longestStreak={longestStreak}/>
       <Card card={currentCard} flipped={flipped} handleFlip={handleFlip}/>
 
       {/** Don't render the UserGuess component if we're on the Start card */}
       {(currentCard.difficulty !== 'start') && 
-      <UserGuess key={currentCard.id} card={currentCard} guessResult={guess} submitGuess={submitGuess}/>}
+      <UserGuess key={currentCard.id} card={currentCard} guessResult={guess} submitGuess={submitGuess} handleStreak={handleStreak}/>}
 
       <div className='buttons-container'>
         <NextButton onClick={getNextCard}/>
